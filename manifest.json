@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Auto Scroller",
+  "version": "1",
+  "description": "Kick back and relax. This extension will automatically scroll down a page while reading.",
+  
+  "browser_action": {
+    "icons": ["icon.png"],
+    "default_icon": "icon.png"
+  },
+
+  "options_page": "options.html",
+
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+
+  "background": { 
+    "scripts": ["jquery.min.js", "autoscroller.js", "background.js"]
+  }
+}
