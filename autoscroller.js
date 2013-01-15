@@ -18,8 +18,20 @@ var AutoScroller = {
 			app.autoScroll();
 		}, app.timerInterval );
 
-		$('body').bind( 'click', function(){
-			window.clearInterval( runScroller );	
+		
+		var set = false, start, diff = 400;
+
+		$('body').bind('mousemove', function( e ){
+
+		     if ( set ){
+		          if ( ( Math.abs( start.x - e.clientX ) > diff ) || ( Math.abs( start.y - e.clientY ) > diff ) ){
+		               window.clearInterval( runScroller );
+		          }
+		     }
+		     else{
+		          start = { x: e.clientX, y: e.clientY };
+		          set = true;     
+		     }
 		});
 	}
 };
