@@ -2,26 +2,20 @@ var AutoScroller = {
 
 	scrollSpeed: 1000,
 
-	scrollAmount: localStorage["arReadSpeed"] || 15,
+	scrollAmount: 15,
 
-	timerInterval: 100,
+	timerInterval: 500,
+
+	autoScroll: function(){
+
+		var body = $( 'body');
+		body.animate({ scrollTop: body.scrollTop() + this.scrollAmount }, this.timerInterval );
+	},
 
 	init: function(){
-
 		var app = this;
-		var speed = this.scrollAmount;
-
 		var runScroller = setInterval( function(){
-			
-			var body = $( 'body');
-			var lastTop = body.scrollTop();
-
-			body.animate({ scrollTop: lastTop + speed }, app.timerInterval );
-
-			if ( body.scrollTop() == lastTop ){
-				window.clearInterval( runScroller );
-			}
-
+			app.autoScroll();
 		}, app.timerInterval );
 
 		$('body').bind( 'click', function(){
